@@ -22,10 +22,10 @@ void vectors(){
                        // is easier to use in terms of syntax, will see later
     v.emplace_back(3);
 
-    for (int i = 0; i < 3; ++i){
-        std::cout << v[i] << " ";
-    }
-    std::cout << "\n";
+    // for (int i = 0; i < 3; ++i){
+    //     std::cout << v[i] << " ";
+    // }
+    // std::cout << "\n";
 
     // A vector of pairs
 
@@ -33,40 +33,118 @@ void vectors(){
 
     vector_of_pairs.push_back({10, 01});
 
-    std::cout << vector_of_pairs[0].first << " " << vector_of_pairs[0].second << std::endl;
+    // std::cout << vector_of_pairs[0].first << " " << vector_of_pairs[0].second << std::endl;
 
     vector_of_pairs.emplace_back(40, 04);
 
-    std::cout << vector_of_pairs[1].first << " " << vector_of_pairs[1].second << std::endl;
+    // std::cout << vector_of_pairs[1].first << " " << vector_of_pairs[1].second << std::endl;
 
     std::vector<int> v0(5); // declares a vector v of size 5, but more can be stored.
 
     std::vector<int> v1(5, 7); // declares a vector v1 of size 5, where each elements
                                // stores 7 --> {7, 7, 7, 7, 7}
 
-    for (int i = 0; i < 5; ++i){
-        std::cout << i+1 << ". element of v1 is " << v1[i] << "\n";
-    }
+    // for (int i = 0; i < 5; ++i){
+    //     std::cout << i+1 << ". element of v1 is " << v1[i] << "\n";
+    // }
 
-    std::vector<int> v2(v1);  // v2 now contains v1
+    // std::vector<int> v2(v1);  // v2 now contains v1
 
-    for (int i = 0; i < 5; ++i){
-        std::cout << i+1 << ". element of v2 is " << v2[i] << "\n";
-    }
+    // for (int i = 0; i < 5; ++i){
+    //     std::cout << i+1 << ". element of v2 is " << v2[i] << "\n";
+    // }
 
     // Printing vectors through iterators
 
-    std::vector<int>::iterator it = v1.begin();
-    //++it;
-    std::cout << *(it) << "\n";
+    // std::vector<int>::iterator it = v1.begin();
+    // //++it;
+    // std::cout << *(it) << "\n";
 
-    std::vector<int>::iterator it1 = v1.end(); // points to the memory address after the last element
-    --it1;
-    std::cout << *(it1) << std::endl; //
+    // std::vector<int>::iterator it1 = v1.end(); // points to the memory address after the last element
+    // --it1;
+    // std::cout << *(it1) << std::endl; //
 
-    std::vector<int>::iterator it2 = v1.rend();
-    it2--;
-    std::cout << *(it2) << std::endl;
+    // std::vector<int>::iterator it2 = v1.rend(); // nobody uses this anymore, but theoretically it will point to the element before the first element in the vector
+    // it2++;
+    // std::cout << *(it2) << std::endl;
+
+    // std::vector<int>::iterator it3 = v1.rbegin();
+    // it3++;
+    // std::cout << *(it3) << std::endl;
+    v1.push_back(6);
+    // for (std::vector<int>::iterator it = v1.begin(); it != v1.end(); it++){
+    //     std::cout << *(it) << " ";
+    // }
+    // std::cout << std::endl;
+
+    // for (auto it = v.begin(); it != v.end(); ++it){
+    //     std::cout << *(it) << " ";
+    // }
+    // std::cout << std::endl;
+
+    // for (auto it : v1){
+    //     std::cout << it << " ";
+    // }
+    // std::cout << std::endl;
+
+    // Erase function
+
+    //v1.erase(v1.end()-1); // deletes the element at that position
+
+    //v1.erase(v1.begin(), v1.end()-1); // deletes the elements from [start, end) <-- all from start to end-1
+
+    // for (auto it : v1){
+    //     std::cout << it << " ";
+    // }
+    // std::cout << std::endl;
+
+    v.insert(v.begin(), 0);
+
+    for (auto it = v.begin(); it != v.end(); ++it){
+        std::cout << *(it) << " ";
+    }
+    std::cout << std::endl;
+
+    v1.insert(v1.begin() + 2, v.begin(), v.end());
+
+    for (auto it : v1){
+        std::cout << it << " ";
+    }
+    std::cout << std::endl;
+
+    v1.insert(v1.begin() + 4, 2, 5);
+
+    for (auto it : v1){
+        std::cout << it << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "The size of vector v1 is " << v1.size() << std::endl;
+
+    v1.pop_back();
+
+    for (auto it : v1){
+        std::cout << it << " ";
+    }
+    std::cout << std::endl;
+
+    v1.swap(v);
+
+    for (auto it : v){
+        std::cout << it << " ";
+    }
+
+    std::cout << std::endl;
+
+    for (auto it : v1){
+        std::cout << it << " ";
+    }
+    std::cout << std::endl;
+
+    v1.clear();
+
+    std::cout << "Vector v1 is " << v1.empty() << std::endl << "Vector v is " << v.empty() << std::endl;
+
 }
 int main(){
     // std::string s = "Shokalskiy";

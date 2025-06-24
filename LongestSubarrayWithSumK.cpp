@@ -11,22 +11,43 @@ void Print(std::vector<std::pair<int, int>> arr){
         std::cout << it.first << " " << it.second << std::endl;
     }
 }
+int LongestSubarray(std::vector<std::pair<int, int>> arr){
+    int maxLen = 0;
+    for (auto it : arr){
+        if (maxLen < it.second - it.first + 1){
+            maxLen = it.second - it.first + 1;
+        }
+    }
+    return maxLen;
+}
 void generateSubarray(std::vector<int> nums, int k){
     std::vector<std::pair<int, int>> storePairs;
     int left = 0;
     for (int right = 0; left < nums.size(); ++right){
-        std::cout << left << " " << right << " ." << std::endl;
+        int sum = sumIndex(left, right, nums);
         if (right == nums.size() - 1){
+            if (left == nums.size() - 1){
+                if (sum == k){
+                    storePairs.emplace_back(left, right);
+                }
+                break;
+            }
             left++;
             right = left - 1;
         }
-        if (sumIndex(left, right, nums) == k){
+        if (sum == k){
             storePairs.emplace_back(left, right);
             left++;
             right = left-1;
         }
+        else if (sum > k){
+            left++;
+            right--;
+        }
     }
     Print(storePairs);
+    int ans = LongestSubarray(storePairs);
+    std::cout << ans << std::endl;
 }
 int main(){
     int n, k, num = 0;

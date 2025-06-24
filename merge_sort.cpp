@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+
+// Idea: Divide and merge. Merging requires clever use of indices and a temporary array/vector.
+
 void merge(std::vector<int> &arr, int low, int mid, int high){
     int i = low, j = mid+1;
     std::vector<int> temp;
@@ -47,3 +50,5 @@ int main(){
     Print(arr);
     return 0;
 }
+
+// Time complexity: O(n * log n) --> Merging is an iterative process O(n) and dividing is a recursive process taking about n * log n processes

@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 #include <chrono>
 
+// Idea: Position (the pivot) and call recursively
+
 void swap(int* i, int* j){
     int temp = *i;
     *i = *j;
@@ -53,3 +55,6 @@ int main(){
     std::cout << "Time: " << duration.count() << " nanoseconds" << std::endl;
     return 0;
 }
+
+// Time complexity: O(n * log n) in the average case, but O(n^2) in the worst case when pivot is chosen such that the partitions are 'one-sided' throughout.
+// Note: Sometimes preferred over merge sort because of taking O(log n) space complexity from the recursion calls.

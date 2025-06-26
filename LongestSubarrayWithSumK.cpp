@@ -25,16 +25,6 @@ void generateSubarray(std::vector<int> nums, int k){
     int left = 0;
     for (int right = 0; left < nums.size(); ++right){
         int sum = sumIndex(left, right, nums);
-        if (right == nums.size() - 1){
-            if (left == nums.size() - 1){
-                if (sum == k){
-                    storePairs.emplace_back(left, right);
-                }
-                break;
-            }
-            left++;
-            right = left - 1;
-        }
         if (sum == k){
             storePairs.emplace_back(left, right);
             left++;
@@ -43,6 +33,9 @@ void generateSubarray(std::vector<int> nums, int k){
         else if (sum > k){
             left++;
             right--;
+        }
+        else if (sum < k){
+            continue;
         }
     }
     Print(storePairs);

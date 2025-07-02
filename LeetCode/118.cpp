@@ -1,4 +1,6 @@
-
+// https://leetcode.com/problems/pascals-triangle/description/
+// Attempt 1: Iterate through using last element to find out the next element
+// Outcome: Accepted
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {

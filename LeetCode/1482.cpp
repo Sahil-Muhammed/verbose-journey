@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/
+// Attempt 1: Binary search over answer space
+// Outcome: Accepted
 class Solution {
 public:
     int calcBouquet(vector<int> bloomDay, int m, int k, int day){

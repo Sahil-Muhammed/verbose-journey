@@ -7,7 +7,7 @@ public:
         while (low <= high){
             int mid = (low+high)/2;
             int missing = arr[mid] - (mid+1);
-            if (missing < k){
+            if (missing < k){ // missing > k doesnt work for some testcases :o
                 low = mid + 1;
             }
             else{

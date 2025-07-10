@@ -13,7 +13,7 @@ public:
             }
             j++;
         }
-        cout << "Mid is " << lim << " and count is " << count << endl;
+        //cout << "Mid is " << lim << " and count is " << count << endl;
         if (count >= k){
             return true;
         }

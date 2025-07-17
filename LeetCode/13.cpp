@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/roman-to-integer/description/
+// Attempt 1: Compare the current with the next element
+// Outcome: Accepted
 class Solution {
 public:
     int romanToInt(string s) {
@@ -10,7 +13,7 @@ public:
         int j = 0;
         while (j < s.size() - 1){
             if (val[s[j]] < val[s[j+1]]){
-                sum -= val[s[j]]; 
+                sum -= val[s[j]];
             }
             else{
                 sum += val[s[j]];

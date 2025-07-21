@@ -27,3 +27,36 @@ public:
         return ans;
     }
 };
+// Attempt 2: Using recursion and for loop
+// Outcome: Accepted
+class Solution {
+public:
+    void recursiveTree(int pos, int target, vector<int>& ds, vector<int> candidates, vector<vector<int>>& ans){
+            if (target == 0){
+                ans.push_back(ds);
+                return;
+            }
+
+        for (int i = pos; i < candidates.size(); ++i){
+            if (i > pos && candidates[i] == candidates[i-1]){
+                continue;
+            }
+            if (candidates[i] > target){
+                break;
+            }
+            else if (candidates[i] <= target){
+                ds.push_back(candidates[i]);
+                recursiveTree(i+1, target - candidates[i], ds, candidates, ans);
+                ds.pop_back();
+            }
+            //recursiveTree(i, target, ds, candidates, ans);
+        }
+    }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<vector<int>> ans;
+        vector<int> ds;
+        sort(candidates.begin(), candidates.end());
+        recursiveTree(0, target, ds, candidates, ans);
+        return ans;
+    }
+};

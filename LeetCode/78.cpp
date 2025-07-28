@@ -26,3 +26,22 @@ public:
         return ans;
     }
 };
+// Attempt 2: Using backtracking
+// Outcome: Accepted
+class Solution {
+public:
+    void recursivePowerset(vector<int>& nums, vector<int> ds, vector<vector<int>>& ans, int pos){
+        ans.push_back(ds);
+        for (int i = pos; i < nums.size(); ++i){
+            ds.push_back(nums[i]);
+            recursivePowerset(nums, ds, ans, i+1);
+            ds.pop_back();
+        }
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> ds;
+        recursivePowerset(nums, ds, ans, 0);
+        return ans;
+    }
+};

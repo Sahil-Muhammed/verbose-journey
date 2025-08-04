@@ -16,6 +16,10 @@ int recursion(int pos, int currChoice, std::vector<std::vector<int>> points, std
 	if (pos < 0){
 		return 0;
 	}
+
+    if (dp[pos][currChoice] != -1){
+        return dp[pos][currChoice];
+    }
 	if (pos == 0){
 		int maximum = 0;
 		for (int i = 0; i < 3; ++i){
@@ -24,35 +28,24 @@ int recursion(int pos, int currChoice, std::vector<std::vector<int>> points, std
 			}
 			maximum = std::max(maximum, points[pos][i]);
 		}
-		return dp[pos][currChoice] = maximum;
+		return dp[0][currChoice] = maximum;
 	}
-	
-	if (dp[pos][currChoice] != -1){
-		return dp[pos][currChoice];
-	}
-
-	int left = 0, mid = 0, right = 0;
-
+	int maxi = 0;
+    
 	for (int i = 0; i < 3; ++i){
 		if (i == currChoice){
 			continue;
 		}
-		if (left == 0){
-			left = points[pos][i] + recursion(pos - 1, i, points, dp);
-		}
-		else if (mid == 0){
-			mid = points[pos][i] + recursion(pos - 1, i, points, dp);
-		}
-		else{
-			right = points[pos][i] + recursion(pos - 1, i, points, dp);
-		}
+		maxi = std::max(points[pos][i] + recursion(pos - 1, i, points, dp), maxi);
 	}
-	return dp[pos][currChoice] = max3(left, mid, right);
+	return dp[pos][currChoice] = maxi;
+    return maxi;
 }
 int main(){
 	int n;
 	std::cin >> n;
 	std::vector<std::vector<int>> points;
+	
 	for (int i = 0; i < n; ++i){
 		int temp1 = 0, temp2 = 0, temp3 = 0;
 		std::vector<int> temp;
@@ -62,11 +55,14 @@ int main(){
 		temp.push_back(temp3);
 		points.push_back(temp);
 	}
-	std::vector<std::vector<int>> dp(n, std::vector<int>(4, -1));
+	
+	std::vector<std::vector<int>> dp(n+1, std::vector<int>(4, -1));
+	
 	auto begin = std::chrono::high_resolution_clock::now();
 	int ans = recursion(n - 1, n, points, dp);
 	auto end = std::chrono::high_resolution_clock::now();
 	auto time = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
+	
 	std::cout << "Time taken: " << time.count() << std::endl;
 	std::cout << ans << std::endl;
 	return 0;

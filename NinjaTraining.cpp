@@ -12,34 +12,45 @@ int max3(int a, int b, int c){
 	}
 	return c;
 }
-int recursion(int pos, int currChoice, std::vector<std::vector<int>> points, std::vector<std::vector<int>>& dp){
-	if (pos < 0){
-		return 0;
-	}
+int recursion(int pos, int currChoice, std::vector<std::vector<int>> points){
+// 	if (pos < 0){
+// 		return 0;
+// 	}
 
-    if (dp[pos][currChoice] != -1){
-        return dp[pos][currChoice];
-    }
-	if (pos == 0){
-		int maximum = 0;
-		for (int i = 0; i < 3; ++i){
-			if (i == currChoice){
-				continue;
-			}
-			maximum = std::max(maximum, points[pos][i]);
-		}
-		return dp[0][currChoice] = maximum;
-	}
-	int maxi = 0;
+//     if (dp[pos][currChoice] != -1){
+//         return dp[pos][currChoice];
+//     }
+// 	if (pos == 0){
+// 		int maximum = 0;
+// 		for (int i = 0; i < 3; ++i){
+// 			if (i == currChoice){
+// 				continue;
+// 			}
+// 			maximum = std::max(maximum, points[pos][i]);
+// 		}
+// 		return dp[0][currChoice] = maximum;
+// 	}
+// 	int maxi = 0;
     
-	for (int i = 0; i < 3; ++i){
-		if (i == currChoice){
-			continue;
-		}
-		maxi = std::max(points[pos][i] + recursion(pos - 1, i, points, dp), maxi);
-	}
-	return dp[pos][currChoice] = maxi;
-    return maxi;
+// 	for (int i = 0; i < 3; ++i){
+// 		if (i == currChoice){
+// 			continue;
+// 		}
+// 		maxi = std::max(points[pos][i] + recursion(pos - 1, i, points, dp), maxi);
+// 	}
+// 	return dp[pos][currChoice] = maxi;
+//     return maxi;
+    std::vector<std::vector<int>> dp(points.size() + 1, std::vector<int> (4, -1));
+    
+    int prev0 = max3(points[points.size() - 1][0], points[points.size() - 1][1], points[points.size() - 1][2]);
+    int prev1 = prev0;
+    int prev2 = prev1;
+    int maxi = 0;
+    for(int i = 1; i < points.size(); ++i){
+        for (int j = 0; j < 3; ++j){
+            maxi = std::max(maxi, )
+        }
+    }
 }
 int main(){
 	int n;

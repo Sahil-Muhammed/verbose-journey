@@ -146,6 +146,44 @@ void vectors(){
     std::cout << "Vector v1 is " << v1.empty() << std::endl << "Vector v is " << v.empty() << std::endl;
 
 }
+void lists(){
+    std::list <int> ls;
+    ls.push_back(1);
+    ls.emplace_back(2);
+    ls.push_front(3);
+    ls.emplace_front(4);
+    // rest of the functions are the same as for vectors
+}
+void deque(){
+    std::deque<int> dq;
+    dq.push_back(1);
+    dq.emplace_back(2);
+    dq.push_front(3);
+    dq.emplace_front(4);
+    // rest of the functions are the same as for vectors
+}
+void stack(){
+    std::stack<int> st;
+    st.push(1);
+    st.pop();
+    std::cout << "The size of the stack is " << st.size() << std::endl;
+    std::cout << "The top of the stack is " << st.top() << std::endl;
+    std::cout << "Is the stack empty? " << st.empty() << std::endl;
+    std::stack<int> st1;
+    st1.push(0);
+    st1.swap(st);
+}
+void queue(){
+    std::queue<int> q;
+    q.push(1);
+    q.emplace(2);
+    q.push(5);
+    std::cout << "The front of the queue is " << q.front() << std::endl;
+    q.pop();
+    q.back() += 5;
+    std::cout << "front of queue: " << q.front() << std::endl;
+    std::cout << "back of queue: " << q.back() << std::endl;
+}
 int main(){
     // std::string s = "Shokalskiy";
     // int len = s.size();

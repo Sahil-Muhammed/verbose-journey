@@ -42,14 +42,19 @@ int recursion(int pos, int currChoice, std::vector<std::vector<int>> points){
 //     return maxi;
     std::vector<std::vector<int>> dp(points.size() + 1, std::vector<int> (4, -1));
     
-    int prev0 = max3(points[points.size() - 1][0], points[points.size() - 1][1], points[points.size() - 1][2]);
+    int prev0 = max3(points[0][0], points[0][1], points[0][2]);
     int prev1 = prev0;
     int prev2 = prev1;
+	std::vector<int> prev;
+	prev.push_back(prev0);
+	prev.push_back(prev1);
+	prev.push_back(prev2);
     int maxi = 0;
     for(int i = 1; i < points.size(); ++i){
         for (int j = 0; j < 3; ++j){
-            maxi = std::max(maxi, )
+            maxi = std::max(maxi, points[i][j] + prev[j]);
         }
+	
     }
 }
 int main(){

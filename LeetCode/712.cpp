@@ -70,3 +70,33 @@ public:
         return sum;
     }
 };
+
+// Attempt 2: Using DP for LCS
+// Outcome: Accepted; 93/93
+class Solution {
+    public:
+    int minimumDeleteSum(string s1, string s2) {
+        int ascVal = 0;
+        for (char c : s1){
+            ascVal += c;
+        }
+
+        for (char c : s2){
+            ascVal += c;
+        }
+
+        vector<vector<int>> dp(s1.size() + 1, vector<int>(s2.size() + 1, 0));
+        for (int i = 1; i <= s1.size(); ++i){
+            for (int j = 1; j <= s2.size(); ++j){
+                if (s1[i-1] == s2[j-1]){
+                    dp[i][j] = dp[i-1][j-1] + s1[i-1];
+                }
+                else{
+                    dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
+                }
+            }
+        }
+
+        return ascVal - (2 * dp[s1.size()][s2.size()]);
+    }
+};
